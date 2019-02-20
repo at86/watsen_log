@@ -1,0 +1,17 @@
+{
+  "name": "watsen_log",
+  "version": "1.0.2",
+  "description": "Output call place or call stack of console.log()",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "watsen",
+    "console",
+    "log"
+  ],
+  "author": "watsenwang",
+  "license": "ISC",
+  "dependencies": {}
+}
