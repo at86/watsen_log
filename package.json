@@ -1,6 +1,6 @@
 {
   "name": "watsen_log",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Output call place or call stack of console.log()",
   "main": "index.js",
   "scripts": {
