@@ -1,4 +1,3 @@
-
 // the call place of console.log
 const CALL_POINT = 1
 // the call stack of console.log
@@ -70,13 +69,12 @@ Object.defineProperty(winObj, '__AT_STACK__', {
       // if (!isNaN(lineNum) && (lineNum !== 1 || (lineNum === 1 && errLineArr.length === 0))) {
       //   errLineArr.push(lineNum);
       // } 
-      
+
     }
 
     if (_logType === CALL_POINT) {
       return errLineArr.slice(0, 1);
-    }
-    else {
+    } else {
       return errLineArr.reverse();
     }
   }
@@ -89,20 +87,29 @@ Object.defineProperty(winObj, '__AT_LINE02__', {
   }
 });
 
+function getDateTime() {
+  const d = new Date();
+  return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}.${d.getMilliseconds()}`
+}
+
 console.log = function () {
   //RangeError: Maximum call stack size exceeded
   // console.log(winObj.__AT_LINE02__);
-
-  original_console_log(winObj.__AT_LINE02__);
+  let s = winObj.__AT_LINE02__;
+  if (s.indexOf('at ') === 0) {
+    original_console_log(`at ${getDateTime()} (${s.substr(3)})`);
+  } else {
+    original_console_log(`at ${getDateTime()} (${s})`);
+  }
   original_console_log.apply(null, arguments);
 };
 
 /**
  * output call place or call stack of console.log
- * @param type 
+ * @param type
  *  <pre>
  *    CALL_POINT: call place
- *    CALL_STACK: call stack 
+ *    CALL_STACK: call stack
  */
 function logType(type) {
   _logType = type
