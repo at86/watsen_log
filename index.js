@@ -1,3 +1,5 @@
+const colors = require('colors');
+
 // the call place of console.log
 const CALL_POINT = 1
 // the call stack of console.log
@@ -23,7 +25,7 @@ Object.defineProperty(winObj, '__AT_STACK__', {
     // Error.prepareStackTrace = old;
 
     var err = new Error();
-    // Error.captureStackTrace(err, arguments.callee);  
+    // Error.captureStackTrace(err, arguments.callee);
     Error.captureStackTrace(err, arguments.callee.caller.caller);
 
     // original_console_log(err.stack)
@@ -50,7 +52,7 @@ Object.defineProperty(winObj, '__AT_STACK__', {
        at startup (bootstrap_node.js:204:16)
        */
       if (errLines[i].indexOf('Module._compile') !== -1
-        || errLines[i].indexOf('Generator.next') !== -1) {
+          || errLines[i].indexOf('Generator.next') !== -1) {
         break;
       }
 
@@ -68,7 +70,7 @@ Object.defineProperty(winObj, '__AT_STACK__', {
       // // original_console_log(i, lineNum);
       // if (!isNaN(lineNum) && (lineNum !== 1 || (lineNum === 1 && errLineArr.length === 0))) {
       //   errLineArr.push(lineNum);
-      // } 
+      // }
 
     }
 
@@ -97,9 +99,9 @@ console.log = function () {
   // console.log(winObj.__AT_LINE02__);
   let s = winObj.__AT_LINE02__;
   if (s.indexOf('at ') === 0) {
-    original_console_log(`at ${getDateTime()} (${s.substr(3)})`);
+    original_console_log(`at ${getDateTime()} (${s.substr(3)})`.green);
   } else {
-    original_console_log(`at ${getDateTime()} (${s})`);
+    original_console_log(`at ${getDateTime()} (${s})`.green);
   }
   original_console_log.apply(null, arguments);
 };

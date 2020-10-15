@@ -13,5 +13,7 @@
   ],
   "author": "watsenwang",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }
