@@ -2,3 +2,4 @@
 enterApp.zip
 package-lock.json
 *.iml
+node_modules
